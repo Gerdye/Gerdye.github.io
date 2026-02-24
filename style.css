@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #1E3A8A;       /* тёмно-синий для основных кнопок */
+  --primary-hover: #2563EB;
+  --primary-light: #EFF6FF;
+  --danger-color: #dc2626;        /* красный для "Очистить корзину" */
+  --danger-hover: #b91c1c;
+  --text-dark: #1a1a2e;
+  --text-medium: #4a4a68;
+  --text-light: #6b6b8d;
+  --bg-white: #ffffff;
+  --bg-light: #f8f9fa;
+  --border-color: #e8e8f0;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-dark);
+  background: var(--bg-light);
+}
+
+.container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+/* Анимации */
+.animate-on-scroll { opacity:0; transform:translateY(50px); transition:opacity 0.8s ease, transform 0.8s ease; }
+.animate-on-scroll.visible { opacity:1; transform:translateY(0); }
+
+.pulse-btn { animation:pulse 2.2s infinite ease-in-out; }
+@keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.04); } }
+
+/* Основные кнопки (Оформить заказ, Отправить заявку и т.д.) */
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary-color);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.submit-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+}
+
+/* Кнопка "Очистить корзину" — красная и уменьшенная */
+.clear-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 24px;           /* уменьшенный размер */
+  font-size: 0.95rem;           /* чуть меньше шрифт */
+  font-weight: 600;
+  color: #fff;
+  background: var(--danger-color);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  margin-top: 12px;
+}
+
+.clear-btn:hover {
+  background: var(--danger-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+}
+
+/* Уменьшенная кнопка поддержки */
+.support-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary-color);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+.support-btn svg { width: 20px; height: 20px; }
+
+/* Кнопка "Посмотреть отзывы" — тоже тёмно-синяя, компактная */
+.reviews-btn-wrapper { text-align: center; margin: 40px 0 60px; }
+.reviews-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary-color);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+.reviews-btn svg { width: 22px; height: 22px; }
+.reviews-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+}
+
+/* Аккордеон FAQ */
+.faq-question {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: white;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+.faq-question:hover { background: var(--primary-light); }
+.faq-icon { font-size: 1.4rem; transition: transform 0.3s; }
+.faq-item.active .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  background: white;
+}
+.faq-item.active .faq-answer { max-height: 1200px; padding: 0 24px 20px; }
+
+/* HEADER */
+.header {
+  background: var(--bg-white);
+  padding: 20px 0;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-icon { width: 40px; height: 40px; color: var(--primary-color); }
+.logo-text { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); }
+.cart-btn { background: none; border: none; cursor: pointer; position: relative; }
+.cart-icon { width: 28px; height: 28px; color: var(--text-dark); }
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.nav { display: flex; gap: 32px; }
+.nav-link { font-size: 1.1rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: color 0.3s; }
+.nav-link:hover, .nav-link.active { color: var(--primary-color); }
+
+/* MAIN */
+.main-section { padding: 60px 0; background: var(--bg-white); }
+.product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.product-info { max-width: 560px; }
+.product-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+.product-description { font-size: 1.125rem; color: var(--text-medium); margin-bottom: 30px; }
+.benefits-list { list-style: none; margin-bottom: 30px; }
+.benefits-list li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-color); }
+.check-icon { width: 24px; height: 24px; background: var(--primary-light); color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+.price-block { display: flex; align-items: baseline; gap: 12px; padding: 20px 24px; background: var(--primary-light); border-radius: var(--radius-md); border-left: 4px solid var(--primary-color); margin-bottom: 30px; }
+.price-value { font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+.product-image-wrapper { display: flex; justify-content: center; }
+.product-image { max-width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.add-to-cart-form { display: flex; align-items: center; gap: 16px; }
+.add-to-cart-form select { padding: 12px; border: 2px solid var(--border-color); border-radius: var(--radius-sm); }
+
+/* PAYMENT */
+.payment-section { padding: 80px 0; background: var(--bg-light); }
+.section-title { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 50px; }
+.payment-methods { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-bottom: 60px; }
+.payment-card { background: var(--bg-white); padding: 30px; border-radius: var(--radius-md); text-align: center; box-shadow: var(--shadow-sm); transition: transform 0.4s ease; }
+.payment-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 15px 35px rgba(30,58,138,0.2); }
+.payment-icon { width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; overflow: hidden; background: #f8f9fa; padding: 8px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.06); }
+.payment-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+.payment-name { font-size: 1.25rem; font-weight: 600; margin-bottom: 10px; }
+.payment-desc { font-size: 0.9rem; color: var(--text-light); }
+
+.order-form-wrapper { max-width: 500px; margin: 0 auto; background: var(--bg-white); padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.form-title { text-align: center; font-size: 1.5rem; font-weight: 600; margin-bottom: 30px; }
+.order-form { display: flex; flex-direction: column; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 0.9rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea { padding: 14px 16px; font-size: 1rem; border: 2px solid var(--border-color); border-radius: var(--radius-sm); transition: border-color 0.3s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-color); }
+.error-message { font-size: 0.8rem; color: #dc3545; }
+
+/* Поддержка */
+.support-section { padding: 80px 0; background: var(--bg-white); text-align: center; }
+.support-title { font-size: 2rem; font-weight: 700; margin-bottom: 15px; }
+.support-desc { font-size: 1.125rem; color: var(--text-medium); margin-bottom: 30px; }
+
+/* Footer */
+.footer { padding: 30px 0; background: var(--text-dark); color: var(--bg-light); text-align: center; }
+
+/* Корзина модалка */
+.cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); }
+.cart-modal.active { display: block; }
+.cart-content {
+  background: var(--bg-white);
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.cart-modal.active .cart-content { transform: scale(1); opacity: 1; }
+.close { position: absolute; top: 10px; right: 20px; font-size: 32px; cursor: pointer; color: var(--text-light); }
+.close:hover { color: var(--text-dark); }
+.cart-items { margin-bottom: 20px; }
+.cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-color); }
+.remove-item { background: none; border: none; color: #dc3545; cursor: pointer; font-size: 0.9rem; }
+.cart-total { display: flex; justify-content: space-between; font-weight: 600; margin: 20px 0; padding-top: 10px; border-top: 1px solid var(--border-color); }

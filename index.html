@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAX Accounts Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M2 8H22" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="6" cy="14" r="2" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">MAX Accounts Shop</span>
+            </div>
+
+            <nav class="nav">
+                <a href="#main" class="nav-link active">Главная</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+
+            <button id="cartButton" class="cart-btn">
+                <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                <span id="cartCount" class="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main-section animate-on-scroll" id="main">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-info">
+                    <h1 class="product-title">Готовые аккаунты мессенджера MAX</h1>
+                    <p class="product-description">
+                        Покупайте готовые аккаунты МАХ с верификацией, без банов, для бизнеса или личного использования.
+                    </p>
+                    <ul class="benefits-list">
+                        <li><span class="check-icon">✓</span>Полная верификация аккаунта</li>
+                        <li><span class="check-icon">✓</span>Без банов и ограничений</li>
+                        <li><span class="check-icon">✓</span>Мгновенная доставка после оплаты</li>
+                        <li><span class="check-icon">✓</span>Гарантия замены 24 часа</li>
+                        <li><span class="check-icon">✓</span>Поддержка 24/7</li>
+                    </ul>
+                    <div class="price-block">
+                        <span class="price-label">Цена:</span>
+                        <span class="price-value">2 500 ₽</span>
+                    </div>
+                    <div class="add-to-cart-form">
+                        <label for="addQuantity">Количество:</label>
+                        <select id="addQuantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                        </select>
+                        <button id="addToCart" class="submit-btn pulse-btn">Добавить в корзину</button>
+                    </div>
+                </div>
+                <div class="product-image-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpEAo6sc30qcsHPo6KWCXHZBZLjWkwIWlwhg&s" alt="Аккаунты">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Оплата -->
+    <section class="payment-section animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title">Способы оплаты</h2>
+            <div class="payment-methods">
+                <div class="payment-card">
+                    <div class="payment-icon sbp">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Sbplay.jpg" alt="СБП">
+                    </div>
+                    <h3 class="payment-name">Система быстрых платежей</h3>
+                    <p class="payment-desc">Быстрая оплата через СБП</p>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon crypto">
+                        <img src="https://www.shutterstock.com/image-vector/bitcoin-orange-logo-icon-circle-600nw-2529375087.jpg" alt="Криптовалюта">
+                    </div>
+                    <h3 class="payment-name">Криптовалюта</h3>
+                    <p class="payment-desc">USDT, BTC, TRX, TON</p>
+                </div>
+            </div>
+
+            <div class="order-form-wrapper">
+                <h3 class="form-title">Оформить заказ</h3>
+                <form id="orderForm" class="order-form">
+                    <div class="form-group">
+                        <label for="telegram">Telegram *</label>
+                        <input type="text" id="telegram" placeholder="@username" required>
+                        <span class="error-message" id="telegramError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Количество аккаунтов *</label>
+                        <select id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Комментарий</label>
+                        <textarea id="comment" placeholder="Дополнительные пожелания..." rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn pulse-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section animate-on-scroll" id="faq">
+        <div class="container">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">Что такое мессенджер Max? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Max — национальный российский мессенджер от VK, запущенный в 2025 году как альтернатива Telegram/WhatsApp. Интегрирован с "Госуслугами", предустанавливается на новых устройствах в РФ. Поддерживает чаты, звонки, мини-приложения, ИИ-помощника, платежи и госсервисы. Аккаунты — готовые профили с логином/паролем, end-to-end шифрованием, 2FA.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Чем отличается аккаунт с "цифровым ID" от обычного? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Без "цифрового ID": Базовый, без верификации через "Госуслуги". Для анонимного общения, бизнеса, тестов. Преимущества: быстро, дешево (100-500 руб.), мультиаккаунтинг. Ограничения: нет доступа к госсервисам, выше риск блокировки за спам.<br>С "цифровым ID": Верифицирован через ESIA ("Госуслуги"), с биометрией/паспортом. Полный доступ к сервисам. Преимущества: надежность, юридическая значимость. Ограничения: дольше настройка, меньше приватности. Цена: 2000-3000 руб.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Сколько стоит аккаунт без ID? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Цена 2000 рублей.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Можно ли использовать аккаунт для бизнеса? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Да, для каналов, ботов или маркетинга. Без ID — для тестов и спама (но риски блокировки). С ID — для официальных целей.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Какой уровень безопасности у аккаунтов? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>End-to-end шифрование, 2FA. Данные хранятся в РФ по закону. Рекомендуем менять пароль сразу после получения.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Есть ли гарантия на аккаунты? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Да, свежие и проверенные. В случае проблем (блокировка) — замена при легитимном использовании и видеофиксации без склеек.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Можно купить несколько аккаунтов? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Да, оптом дешевле. Без ID — для мультиаккаунтинга.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Что делать, если аккаунт заблокируют? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Избегайте спама. Если блок — проверьте правила Max. Мы предоставляем свежие аккаунты.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Как будет происходить передача заказа после оплаты? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>После оплаты в боте пишите в поддержку с скриншотами. Получите инструкцию и доступ.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Альтернативы Max? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>VK Messenger или TamTam, но Max уникален интеграцией с госсервисами.</p></div>
+                </div>
+            </div>
+
+            <div class="reviews-btn-wrapper">
+                <a href="https://t.me/+fn8JUk1SnmRiMWNh" class="reviews-btn" target="_blank">
+                    <svg class="reviews-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    Посмотреть отзывы в Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Поддержка -->
+    <section class="support-section animate-on-scroll">
+        <div class="container">
+            <h2 class="support-title">Нужна помощь?</h2>
+            <p class="support-desc">Наша команда поддержки готова ответить на все ваши вопросы</p>
+            <a href="https://t.me/MaxM0der" class="support-btn" target="_blank">
+                <svg class="support-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                Связаться с поддержкой
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">© 2025 MAX Accounts Shop. Все права защищены.</p>
+            <a href="https://t.me/MaxM0der" class="footer-link" target="_blank">@MaxM0der</a>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <span id="closeCart" class="close">×</span>
+            <h2>Ваша корзина</h2>
+            <div id="cartItems" class="cart-items"></div>
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cartTotalPrice">0 ₽</span>
+            </div>
+            <form id="cartForm" class="order-form">
+                <div class="form-group">
+                    <label for="cartTelegram">Telegram *</label>
+                    <input type="text" id="cartTelegram" placeholder="@username" required>
+                    <span class="error-message" id="cartTelegramError"></span>
+                </div>
+                <button type="submit" class="submit-btn">Оформить заказ</button>
+            </form>
+            <button id="clearCart" class="clear-btn">Очистить корзину</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
